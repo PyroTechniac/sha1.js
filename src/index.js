@@ -18,6 +18,12 @@ class Sha1 {
          * @type {string}
          */
         this.origin = input;
+
+        /**
+         * The hash generated for by the crypto
+         * @type {string}
+         */
+        this.hash = this.generateKey(input);
     }
 
     /**
@@ -26,7 +32,7 @@ class Sha1 {
      * @returns {Sha1Hash}
      */
     generateKey(input) {
-        console.log(input);
+        return crypto.createHash('sha1').update(new Buffer(input)).digest('hex');
     }
 }
 
